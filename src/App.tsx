@@ -1,15 +1,17 @@
-import './App.css'
-import NavBar from './components/NavBar/NavBar'
-import Home from './page/Home/Home'
+import "./App.css";
+import NavBar from "./components/NavBar/NavBar";
+import Home from "./page/Home/Home";
+import { LayoutContainer } from "./StyleComponents/Layout_StyleComponents";
 
 function App() {
-
   return (
-    <div className="App">
+    <>
       <NavBar />
-      <Home />
-    </div>
-  )
+      <LayoutContainer>
+        <Home />
+      </LayoutContainer>
+    </>
+  );
 }
 
-export default App
+export default App;

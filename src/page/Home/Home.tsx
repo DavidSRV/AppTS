@@ -1,5 +1,5 @@
 import React from "react";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridRenderCellParams } from "@mui/x-data-grid";
 import { People } from "@/data/people";
 
 export interface HomeInterface {
@@ -7,26 +7,39 @@ export interface HomeInterface {
 }
 
 export default function Home<HomeInterface>() {
-   pageSize : 5;
-   colums = [
+  const pageSize = 5;
+  const colums = [
     {
       field: "name",
       headerName: "Name",
       flex: 1,
       minWidth: 150,
-      renderCell: (params: GridRenderCellParams)=> <>{params.filed  }</>
+      renderCell: (params: GridRenderCellParams) => <>{params.value}</>,
+    },
+
+    {
+      field: "company",
+      headerName: "Company",
+      flex: 1,
+          renderCell: (params: GridRenderCellParams) => <>{params.value}</>,
+    },  
+    {
+      field: "category",
+      headerName: "Categories",
+      flex: 1,
+          renderCell: (params: GridRenderCellParams) => <>{params.value}</>,
     },
   ];
   return (
-    <div>
       <DataGrid
         rows={People}
+        columns={colums}
         disableColumnSelector
         disableSelectionOnClick
         autoHeight
-        pageSize={[pageSize]}
-        rowsPerPageOptions={pageSize}
+        pageSize={pageSize}
+        rowsPerPageOptions={[pageSize]}
+        getRowId ={(row : any) => row.id}
       />
-    </div>
   );
 }
